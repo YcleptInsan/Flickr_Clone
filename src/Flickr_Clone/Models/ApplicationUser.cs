@@ -8,5 +8,10 @@ namespace Flickr_Clone.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public virtual ICollection<Image> Images { get; set; }
+        public ApplicationUser()
+        {
+            Images = new List<Image>();
+        }
     }
 }

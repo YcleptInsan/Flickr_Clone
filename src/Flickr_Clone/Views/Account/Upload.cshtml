@@ -1,0 +1,13 @@
+﻿@using System.Security.Claims
+@model Flickr_Clone.Models.Image
+@{
+    ViewData["Title"] = "Upload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Upload", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <input type="file" name="file" />
+    <input type="submit" value="Upload" />
+}

@@ -8,7 +8,7 @@ using Flickr_Clone.Models;
 namespace Flickr_Clone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170809162232_Initial")]
+    [Migration("20170809185400_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,6 +64,19 @@ namespace Flickr_Clone.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("Flickr_Clone.Models.Image", b =>
+                {
+                    b.Property<string>("ImageId");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("ImageId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -171,6 +184,13 @@ namespace Flickr_Clone.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Flickr_Clone.Models.Image", b =>
+                {
+                    b.HasOne("Flickr_Clone.Models.ApplicationUser", "User")
+                        .WithMany("Images")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

@@ -1,0 +1,22 @@
+﻿@using System.Security.Claims
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Authentication with Identity</h2>
+<hr />
+@if (User.Identity.IsAuthenticated)
+{
+    <p>Hello @User.Identity.Name</p>
+    @using (Html.BeginForm("LogOff", "Account"))
+    {
+        <input type="submit" value="Log Out"/>
+    }
+}
+else
+{
+    <p>@Html.ActionLink("Register", "Register")</p>
+    <p>@Html.ActionLink("Login", "Login")</p>
+}
+

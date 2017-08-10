@@ -66,7 +66,8 @@ namespace Flickr_Clone.Migrations
                 name: "Images",
                 columns: table => new
                 {
-                    ImageId = table.Column<string>(nullable: true),
+                    ImageId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

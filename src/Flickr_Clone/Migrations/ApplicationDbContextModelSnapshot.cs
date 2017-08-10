@@ -189,7 +189,7 @@ namespace Flickr_Clone.Migrations
             modelBuilder.Entity("Flickr_Clone.Models.Image", b =>
                 {
                     b.HasOne("Flickr_Clone.Models.ApplicationUser", "User")
-                        .WithMany("Images")
+                        .WithMany()
                         .HasForeignKey("UserId");
                 });
 

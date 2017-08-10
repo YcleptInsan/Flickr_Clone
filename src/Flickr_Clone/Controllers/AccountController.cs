@@ -106,7 +106,7 @@ namespace Flickr_Clone.Controllers
 
             if (file.Length > 0)
             {
-                using (FileStream fileStream = new FileStream(Path.Combine(uploads, id.ToString()), FileMode.Create))
+                using (FileStream fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
                 {
                     await file.CopyToAsync(fileStream);
                 }

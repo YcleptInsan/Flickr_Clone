@@ -8,7 +8,7 @@ using Flickr_Clone.Models;
 namespace Flickr_Clone.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170809185400_Initial")]
+    [Migration("20170810000715_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -68,7 +68,8 @@ namespace Flickr_Clone.Migrations
 
             modelBuilder.Entity("Flickr_Clone.Models.Image", b =>
                 {
-                    b.Property<string>("ImageId");
+                    b.Property<int>("ImageId")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("UserId");
 
@@ -189,7 +190,7 @@ namespace Flickr_Clone.Migrations
             modelBuilder.Entity("Flickr_Clone.Models.Image", b =>
                 {
                     b.HasOne("Flickr_Clone.Models.ApplicationUser", "User")
-                        .WithMany("Images")
+                        .WithMany()
                         .HasForeignKey("UserId");
                 });
 
